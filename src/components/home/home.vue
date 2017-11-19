@@ -1,0 +1,76 @@
+<template>
+    <article>
+        <mt-swipe :auto="4000">
+            <mt-swipe-item v-for="item in lunbos" v-bind:key="item.url">
+                <router-link v-bind:to="item.url">
+                    <img v-bind:src="item.img">
+                </router-link>
+            </mt-swipe-item>
+        </mt-swipe>
+        <ul class="mui-table-view mui-grid-view mui-grid-9">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/">
+                    <span class="mui-icon mui-icon-home"></span>
+                    <div class="mui-media-body">首页</div>
+                </router-link>
+            </li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link :to="{name: 'nl'}">
+                    <span class="mui-icon mui-icon-email"></span>
+                    <div class="mui-media-body">新闻资讯</div>
+                </router-link>
+            </li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="#">
+                    <span class="mui-icon mui-icon-chatbubble"></span>
+                    <div class="mui-media-body">图片分享</div>
+                </router-link>
+            </li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="#">
+                    <span class="mui-icon mui-icon-location"></span>
+                    <div class="mui-media-body">地点</div>
+                </router-link>
+            </li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="#">
+                    <span class="mui-icon mui-icon-search"></span>
+                    <div class="mui-media-body">搜一搜</div>
+                </router-link>
+            </li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="#">
+                    <span class="mui-icon mui-icon-phone"></span>
+                    <div class="mui-media-body">联系方式</div>
+                </router-link>
+            </li>
+        </ul>
+    </article>
+</template>
+<script>
+    export default {
+        data(){
+            return {
+                lunbos: [],
+            }
+        },
+        methods: {
+            getLunbo(){
+                this.axios.get(this.api.getLB)
+                .then(result=>this.lunbos = result.data.message);
+            }
+        },
+        created(){
+            this.getLunbo();
+        }
+    }
+</script>
+<style lang="less" scoped>
+    @height: 240px;
+    article{
+        height: @height;
+        img{
+            height: @height;
+        }
+    }
+</style>

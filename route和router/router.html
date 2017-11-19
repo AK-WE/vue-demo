@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ msg }}
+        <!-- //路由占位 -->
+        <router-view></router-view>
+        <br>
+        <router-link to="/login">登录</router-link>
+        <router-link v-bind:to="register">注册</router-link>
+        <router-link :to="{name: 'go', params: { id: 2, uid: 30}}">详情</router-link>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script>
+    var LoginComponent = {
+        template: `<div>{{ msg }}</div>`,
+        data(){
+            return { msg: '登录页面'}
+        }
+    }
+
+    var RegisterComponent = {
+        template: `<div>{{ msg }}</div>`,
+        data(){
+            return { msg: '注册页面'}
+        }
+    }
+
+    var DetailsComponent = {
+        template: `<div>{{ msg }}</div>`,
+        data(){
+            return { msg: '详情页面'}
+        }
+    }
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '路由路由路由',
+            register: {
+                path: '/register'
+            }
+        },
+        router: new VueRouter({
+            routes: [
+                { path: '/login', component: LoginComponent},
+                { path: '/register', component: RegisterComponent},
+                { name: 'go', path: '/details/id/uid', component: DetailsComponent}
+            ]
+        }),
+
+        created(){
+            console.log(this)
+        },
+    })
+</script>
+</html>

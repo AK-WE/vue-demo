@@ -1,22 +1,18 @@
 <template>
     <main>
-        <p>{{ msg }}</p>
+        <app-header></app-header>
+        <router-view></router-view>
+        <app-footer></app-footer>
     </main>
 </template>
 
 <script>
-    export default{
-        data(){
-            return {
-                msg: '测试测试测试'
-            }
-        }
-    }
+
+export default {
+    
+};
 </script>
 <style>
-    p{
-        color: yellowgreen;
-        font-size: 40px;
-    }
+    
 </style>
 
