@@ -12,17 +12,19 @@ import 'mui/examples/hello-mui/css/icons-extra.css'
 import Common from '../components/common';// 会自动找到index.js导入
 import RouterList from '../components/router';
 import api from '../js/api_config.js';
-import date from '../components/common/filter/date.js';
+// import date from '../components/common/filter/date.js';
+import Filter from '../filter';
 
 //启用vue插件
 Vue.use(MintUi);
 Vue.use(Common);
 Vue.use(VueRouter);
+Vue.use(Filter);
 
 //在vue原型中添加axios，让他可在vue全局使用;
 Vue.prototype.axios = axios;
 Vue.prototype.api = api;
-Vue.filter('date',date.date)
+// Vue.filter('date',date.date)
 
 //导入根组件
 import AppComponent from '../components/App.vue';

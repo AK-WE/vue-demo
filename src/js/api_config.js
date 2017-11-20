@@ -6,5 +6,11 @@ export default {
 
     //新闻资讯接口
     getNL: `${domain}/getnewslist`,
-    getND: `${domain}/getnew/`
+    getND: `${domain}/getnew/`,
+
+    //图片共享接口
+    getPL: `${domain}/getimgcategory`,
+    getPC: `${domain}/getimages/`,
+    getPI: `${domain}/getimageInfo/`,
+    getPD: `${domain}/getthumimages/`
 }
